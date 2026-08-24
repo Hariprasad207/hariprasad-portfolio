@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 
 import SectionHeading from "../components/SectionHeading";
-import TimelineItem from "../components/TimeLineItem";
+import TimelineItem from "../components/TimelineItem";
 
 import {
     timeline,
@@ -19,9 +19,22 @@ export default function Experience() {
         <Box
             component="section"
             id="experience"
-            sx={{ py: 11 }}
+            sx={{
+                py: {
+                    xs: 6,
+                    md: 11,
+                },
+            }}
         >
-            <Container maxWidth="lg">
+            <Container
+                maxWidth="lg"
+                sx={{
+                    px: {
+                        xs: 2,
+                        sm: 3,
+                    },
+                }}
+            >
                 <SectionHeading
                     eyebrow="EXPERIENCE & EDUCATION"
                     title="My engineering journey."
@@ -31,7 +44,10 @@ export default function Experience() {
                 <Box
                     sx={{
                         maxWidth: 900,
-                        ml: { xs: 0, md: 2 },
+                        ml: {
+                            xs: 0,
+                            md: 2,
+                        },
                     }}
                 >
                     {timeline.map((item, index) => (
@@ -46,7 +62,14 @@ export default function Experience() {
                     ))}
                 </Box>
 
-                <Box sx={{ mt: 6 }}>
+                <Box
+                    sx={{
+                        mt: {
+                            xs: 4,
+                            md: 6,
+                        },
+                    }}
+                >
                     <Typography
                         variant="h6"
                         sx={{
@@ -59,14 +82,19 @@ export default function Experience() {
 
                     <Stack
                         direction="row"
-                        flexWrap="wrap"
-                        gap={1}
+                        sx={{
+                            flexWrap: "wrap",
+                            gap: 1,
+                        }}
                     >
                         {certifications.map(
                             (certification) => (
                                 <Chip
                                     key={certification}
                                     label={certification}
+                                    sx={{
+                                        maxWidth: "100%",
+                                    }}
                                 />
                             )
                         )}

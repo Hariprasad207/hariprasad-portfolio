@@ -38,28 +38,50 @@ export default function About() {
         <Box
             component="section"
             id="about"
-            sx={{ py: 11 }}
+            sx={{
+                py: {
+                    xs: 6,
+                    md: 11,
+                },
+            }}
         >
-            <Container maxWidth="lg">
+            <Container
+                maxWidth="lg"
+                sx={{
+                    px: {
+                        xs: 2,
+                        sm: 3,
+                    },
+                }}
+            >
                 <SectionHeading
                     eyebrow="ABOUT"
                     title="Engineering with a systems mindset."
                     description="I focus on building maintainable applications where API design, database performance, authentication, and user experience work together."
                 />
 
-                <Grid container spacing={3}>
+                <Grid container spacing={{ xs: 2, md: 3 }}>
                     {items.map((item) => {
                         const Icon = item.icon;
 
                         return (
                             <Grid
-                                item
-                                xs={12}
-                                md={4}
+                                size={{ xs: 12, md: 4 }}
                                 key={item.title}
                             >
-                                <Card sx={{ height: "100%" }}>
-                                    <CardContent sx={{ p: 3.5 }}>
+                                <Card
+                                    sx={{
+                                        height: "100%",
+                                    }}
+                                >
+                                    <CardContent
+                                        sx={{
+                                            p: {
+                                                xs: 2.5,
+                                                md: 3.5,
+                                            },
+                                        }}
+                                    >
                                         <Box
                                             sx={{
                                                 width: 46,
@@ -78,7 +100,9 @@ export default function About() {
 
                                         <Typography
                                             variant="h5"
-                                            sx={{ mb: 1 }}
+                                            sx={{
+                                                mb: 1,
+                                            }}
                                         >
                                             {item.title}
                                         </Typography>

@@ -16,25 +16,40 @@ import {
     OpenInNew,
 } from "@mui/icons-material";
 
-export default function ProjectCard({ project }) {
+export default function ProjectCard({
+    project,
+}) {
     return (
         <Card
             sx={{
                 height: "100%",
+                width: "100%",
+                minWidth: 0,
+
                 display: "flex",
                 flexDirection: "column",
+
+                overflow: "hidden",
             }}
         >
             <CardContent
                 sx={{
-                    p: 3.25,
+                    p: {
+                        xs: 2.5,
+                        md: 3.25,
+                    },
+
                     flexGrow: 1,
+
+                    minWidth: 0,
                 }}
             >
                 <Typography
                     variant="overline"
                     color="primary"
-                    sx={{ fontWeight: 800 }}
+                    sx={{
+                        fontWeight: 800,
+                    }}
                 >
                     PROJECT
                 </Typography>
@@ -44,6 +59,8 @@ export default function ProjectCard({ project }) {
                     sx={{
                         mt: 0.5,
                         fontWeight: 750,
+                        lineHeight: 1.25,
+                        overflowWrap: "break-word",
                     }}
                 >
                     {project.title}
@@ -51,56 +68,103 @@ export default function ProjectCard({ project }) {
 
                 <Typography
                     color="text.secondary"
-                    sx={{ mt: 0.8, mb: 2.5 }}
+                    sx={{
+                        mt: 0.8,
+                        mb: 2.5,
+                        lineHeight: 1.6,
+                    }}
                 >
                     {project.subtitle}
                 </Typography>
 
-                <Stack
-                    direction="row"
-                    flexWrap="wrap"
-                    gap={0.75}
-                    sx={{ mb: 2.5 }}
+                {/* Technology Chips */}
+
+                <Box
+                    sx={{
+                        width: "100%",
+                        maxWidth: "100%",
+                        minWidth: 0,
+                        mb: 2.5,
+                        overflow: "hidden",
+                    }}
                 >
-                    {project.technologies.map(
-                        (technology) => (
-                            <Chip
-                                key={technology}
-                                label={technology}
-                                size="small"
-                                color="primary"
-                                variant="outlined"
-                            />
-                        )
-                    )}
-                </Stack>
+                    <Stack
+                        direction="row"
+                        sx={{
+                            flexWrap: "wrap",
+                            gap: 0.75,
+                            width: "100%",
+                            maxWidth: "100%",
+                        }}
+                    >
+                        {project.technologies.map(
+                            (technology) => (
+                                <Chip
+                                    key={technology}
+                                    label={technology}
+                                    size="small"
+                                    color="primary"
+                                    variant="outlined"
+                                    sx={{
+                                        maxWidth: "100%",
+
+                                        "& .MuiChip-label": {
+                                            overflow: "hidden",
+                                            textOverflow: "ellipsis",
+                                            whiteSpace: "nowrap",
+                                        },
+                                    }}
+                                />
+                            )
+                        )}
+                    </Stack>
+                </Box>
+
+                {/* Description */}
 
                 <Typography
                     variant="body2"
                     color="text.secondary"
-                    sx={{ mb: 2.5 }}
+                    sx={{
+                        mb: 2.5,
+                        lineHeight: 1.7,
+                    }}
                 >
                     {project.description}
                 </Typography>
 
-                <Grid container spacing={1}>
+                {/* Metrics */}
+
+                <Grid
+                    container
+                    spacing={1}
+                    sx={{
+                        width: "100%",
+                    }}
+                >
                     {project.metrics.map((metric) => {
                         const Icon = metric.icon;
 
                         return (
                             <Grid
-                                item
-                                xs={4}
+                                size={{ xs: 4 }}
                                 key={metric.label}
                             >
                                 <Paper
                                     elevation={0}
                                     sx={{
-                                        p: 1.25,
+                                        p: {
+                                            xs: 1,
+                                            sm: 1.25,
+                                        },
+
                                         height: "100%",
+
                                         borderRadius: 2,
-                                        bgcolor:
-                                            "action.hover",
+
+                                        bgcolor: "action.hover",
+
+                                        minWidth: 0,
                                     }}
                                 >
                                     <Icon
@@ -114,7 +178,10 @@ export default function ProjectCard({ project }) {
                                         sx={{
                                             mt: 0.5,
                                             fontWeight: 800,
-                                            fontSize: "0.92rem",
+                                            fontSize: {
+                                                xs: "0.78rem",
+                                                sm: "0.92rem",
+                                            },
                                         }}
                                     >
                                         {metric.value}
@@ -123,6 +190,10 @@ export default function ProjectCard({ project }) {
                                     <Typography
                                         variant="caption"
                                         color="text.secondary"
+                                        sx={{
+                                            display: "block",
+                                            overflowWrap: "break-word",
+                                        }}
                                     >
                                         {metric.label}
                                     </Typography>
@@ -131,6 +202,8 @@ export default function ProjectCard({ project }) {
                         );
                     })}
                 </Grid>
+
+                {/* Highlights */}
 
                 <Box sx={{ mt: 2.5 }}>
                     {project.highlights.map(
@@ -141,6 +214,7 @@ export default function ProjectCard({ project }) {
                                     display: "flex",
                                     gap: 1,
                                     mb: 1.2,
+                                    minWidth: 0,
                                 }}
                             >
                                 <Box
@@ -157,6 +231,9 @@ export default function ProjectCard({ project }) {
                                 <Typography
                                     variant="body2"
                                     color="text.secondary"
+                                    sx={{
+                                        overflowWrap: "break-word",
+                                    }}
                                 >
                                     {highlight}
                                 </Typography>
@@ -166,7 +243,21 @@ export default function ProjectCard({ project }) {
                 </Box>
             </CardContent>
 
-            <CardActions sx={{ px: 3.25, pb: 3 }}>
+            {/* Actions */}
+
+            <CardActions
+                sx={{
+                    px: {
+                        xs: 2.5,
+                        md: 3.25,
+                    },
+
+                    pb: {
+                        xs: 2.5,
+                        md: 3,
+                    },
+                }}
+            >
                 <Button
                     size="small"
                     startIcon={<Code />}

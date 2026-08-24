@@ -1,4 +1,7 @@
-import { Box, Typography } from "@mui/material";
+import {
+    Box,
+    Typography,
+} from "@mui/material";
 
 export default function SectionHeading({
     eyebrow,
@@ -6,7 +9,14 @@ export default function SectionHeading({
     description,
 }) {
     return (
-        <Box sx={{ mb: 5 }}>
+        <Box
+            sx={{
+                mb: {
+                    xs: 3.5,
+                    md: 5,
+                },
+            }}
+        >
             <Typography
                 variant="overline"
                 color="primary"
@@ -23,10 +33,14 @@ export default function SectionHeading({
                 sx={{
                     mt: 0.5,
                     mb: 1,
+
                     fontSize: {
                         xs: "2rem",
+                        sm: "2.3rem",
                         md: "2.7rem",
                     },
+
+                    lineHeight: 1.15,
                 }}
             >
                 {title}
@@ -37,10 +51,13 @@ export default function SectionHeading({
                     color="text.secondary"
                     sx={{
                         maxWidth: 720,
+
                         fontSize: {
-                            xs: "1rem",
+                            xs: "0.95rem",
                             md: "1.05rem",
                         },
+
+                        lineHeight: 1.7,
                     }}
                 >
                     {description}

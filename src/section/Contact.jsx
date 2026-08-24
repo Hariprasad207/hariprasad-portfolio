@@ -1,6 +1,4 @@
-import {
-    useState,
-} from "react";
+import { useState } from "react";
 
 import {
     Box,
@@ -52,43 +50,71 @@ export default function Contact({
         <Box
             component="section"
             id="contact"
-            sx={{ py: 11 }}
+            sx={{
+                py: {
+                    xs: 6,
+                    md: 11,
+                },
+            }}
         >
-            <Container maxWidth="md">
+            <Container
+                maxWidth="md"
+                sx={{
+                    px: {
+                        xs: 2,
+                        sm: 3,
+                    },
+                }}
+            >
                 <SectionHeading
                     eyebrow="CONTACT"
                     title="Let's build something useful."
                     description="I'm open to software engineering opportunities involving backend development, full-stack systems, APIs, databases, and application engineering."
                 />
 
-                <Card>
+                <Card
+                    sx={{
+                        width: "100%",
+                        overflow: "hidden",
+                    }}
+                >
                     <CardContent
                         sx={{
                             p: {
-                                xs: 3,
+                                xs: 2.5,
+                                sm: 3,
                                 md: 5,
                             },
                         }}
                     >
                         <Grid container spacing={2}>
-                            <Grid item xs={12} md={6}>
+                            {/* Email */}
+
+                            <Grid size={{ xs: 12, md: 6 }}>
                                 <Paper
                                     elevation={0}
                                     sx={{
                                         p: 2,
                                         border: "1px solid",
                                         borderColor: "divider",
+                                        minWidth: 0,
                                     }}
                                 >
                                     <Stack
                                         direction="row"
                                         spacing={1.5}
-                                        alignItems="center"
+                                        sx={{
+                                            minWidth: 0,
+                                            alignItems: "center",
+                                        }}
                                     >
                                         <Email color="primary" />
 
                                         <Box
-                                            sx={{ minWidth: 0 }}
+                                            sx={{
+                                                minWidth: 0,
+                                                flex: 1,
+                                            }}
                                         >
                                             <Typography
                                                 variant="caption"
@@ -100,8 +126,12 @@ export default function Contact({
                                             <Typography
                                                 sx={{
                                                     fontWeight: 650,
-                                                    wordBreak:
-                                                        "break-word",
+                                                    fontSize: {
+                                                        xs: "0.88rem",
+                                                        sm: "1rem",
+                                                    },
+                                                    overflowWrap:
+                                                        "anywhere",
                                                 }}
                                             >
                                                 {profile.email}
@@ -111,10 +141,10 @@ export default function Contact({
                                         <Tooltip title="Copy email">
                                             <IconButton
                                                 onClick={copyEmail}
-                                                sx={{
-                                                    ml: "auto",
-                                                }}
                                                 aria-label="Copy email"
+                                                sx={{
+                                                    flexShrink: 0,
+                                                }}
                                             >
                                                 <ContentCopy fontSize="small" />
                                             </IconButton>
@@ -123,7 +153,9 @@ export default function Contact({
                                 </Paper>
                             </Grid>
 
-                            <Grid item xs={12} md={6}>
+                            {/* Phone */}
+
+                            <Grid size={{ xs: 12, md: 6 }}>
                                 <Paper
                                     elevation={0}
                                     sx={{
@@ -135,7 +167,9 @@ export default function Contact({
                                     <Stack
                                         direction="row"
                                         spacing={1.5}
-                                        alignItems="center"
+                                        sx={{
+                                            alignItems: "center",
+                                        }}
                                     >
                                         <Phone color="primary" />
 
@@ -159,7 +193,9 @@ export default function Contact({
                                 </Paper>
                             </Grid>
 
-                            <Grid item xs={12}>
+                            {/* Location */}
+
+                            <Grid size={{ xs: 12 }}>
                                 <Paper
                                     elevation={0}
                                     sx={{
@@ -171,7 +207,9 @@ export default function Contact({
                                     <Stack
                                         direction="row"
                                         spacing={1.5}
-                                        alignItems="center"
+                                        sx={{
+                                            alignItems: "center",
+                                        }}
                                     >
                                         <LocationOn color="primary" />
 
@@ -196,19 +234,29 @@ export default function Contact({
                             </Grid>
                         </Grid>
 
+                        {/* Buttons */}
+
                         <Stack
                             direction={{
                                 xs: "column",
                                 sm: "row",
                             }}
                             spacing={1.5}
-                            sx={{ mt: 4 }}
+                            sx={{
+                                mt: 3.5,
+                            }}
                         >
                             <Button
                                 variant="contained"
                                 startIcon={<Email />}
                                 component="a"
                                 href={`mailto:${profile.email}`}
+                                sx={{
+                                    width: {
+                                        xs: "100%",
+                                        sm: "auto",
+                                    },
+                                }}
                             >
                                 Email Me
                             </Button>
@@ -220,6 +268,12 @@ export default function Contact({
                                 href={profile.linkedin}
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                sx={{
+                                    width: {
+                                        xs: "100%",
+                                        sm: "auto",
+                                    },
+                                }}
                             >
                                 LinkedIn
                             </Button>
@@ -231,6 +285,12 @@ export default function Contact({
                                 href={profile.github}
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                sx={{
+                                    width: {
+                                        xs: "100%",
+                                        sm: "auto",
+                                    },
+                                }}
                             >
                                 GitHub
                             </Button>

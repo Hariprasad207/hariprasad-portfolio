@@ -31,8 +31,12 @@ const navItems = [
     { label: "Contact", href: "#contact" },
 ];
 
-export default function Navbar({ mode, onToggleTheme }) {
-    const [drawerOpen, setDrawerOpen] = useState(false);
+export default function Navbar({
+    mode,
+    onToggleTheme,
+}) {
+    const [drawerOpen, setDrawerOpen] =
+        useState(false);
 
     const handleNavigation = (href) => {
         setDrawerOpen(false);
@@ -46,8 +50,24 @@ export default function Navbar({ mode, onToggleTheme }) {
     return (
         <>
             <AppBar position="sticky">
-                <Container maxWidth="lg">
-                    <Toolbar disableGutters sx={{ minHeight: 70 }}>
+                <Container
+                    maxWidth="lg"
+                    sx={{
+                        px: {
+                            xs: 2,
+                            sm: 3,
+                            md: 3,
+                        },
+                    }}
+                >
+                    <Toolbar
+                        disableGutters
+                        sx={{
+                            minHeight: 64,
+                        }}
+                    >
+                        {/* Logo */}
+
                         <Typography
                             component="a"
                             href="#top"
@@ -56,17 +76,24 @@ export default function Navbar({ mode, onToggleTheme }) {
                                 textDecoration: "none",
                                 fontWeight: 850,
                                 fontSize: "1.15rem",
-                                mr: 4,
+                                mr: {
+                                    xs: 1.5,
+                                    md: 4,
+                                },
                             }}
                         >
                             HN
                             <Box
                                 component="span"
-                                sx={{ color: "primary.main" }}
+                                sx={{
+                                    color: "primary.main",
+                                }}
                             >
                                 .
                             </Box>
                         </Typography>
+
+                        {/* Desktop Navigation */}
 
                         <Box
                             sx={{
@@ -75,15 +102,24 @@ export default function Navbar({ mode, onToggleTheme }) {
                                     md: "flex",
                                 },
                                 flexGrow: 1,
+                                alignItems: "center",
                             }}
                         >
                             {navItems.map((item) => (
                                 <Button
                                     key={item.href}
-                                    onClick={() => handleNavigation(item.href)}
+                                    onClick={() =>
+                                        handleNavigation(item.href)
+                                    }
                                     sx={{
                                         color: "text.secondary",
                                         mx: 0.25,
+
+                                        "&:hover": {
+                                            color: "primary.main",
+                                            backgroundColor:
+                                                "transparent",
+                                        },
                                     }}
                                 >
                                     {item.label}
@@ -91,18 +127,28 @@ export default function Navbar({ mode, onToggleTheme }) {
                             ))}
                         </Box>
 
-                        <Stack direction="row">
+                        {/* Actions */}
+
+                        <Stack
+                            direction="row"
+                            spacing={0.25}
+                            sx={{
+                                ml: "auto",
+                            }}
+                        >
                             <Tooltip
                                 title={
                                     mode === "dark"
-                                        ? "Light mode"
-                                        : "Dark mode"
+                                        ? "Switch to light mode"
+                                        : "Switch to dark mode"
                                 }
                             >
                                 <IconButton
                                     onClick={onToggleTheme}
-                                    color="inherit"
                                     aria-label="Toggle theme"
+                                    sx={{
+                                        color: "text.primary",
+                                    }}
                                 >
                                     {mode === "dark" ? (
                                         <LightMode />
@@ -112,16 +158,20 @@ export default function Navbar({ mode, onToggleTheme }) {
                                 </IconButton>
                             </Tooltip>
 
+                            {/* Mobile Menu */}
+
                             <IconButton
-                                onClick={() => setDrawerOpen(true)}
+                                onClick={() =>
+                                    setDrawerOpen(true)
+                                }
+                                aria-label="Open navigation menu"
                                 sx={{
                                     display: {
                                         xs: "inline-flex",
                                         md: "none",
                                     },
+                                    color: "text.primary",
                                 }}
-                                color="inherit"
-                                aria-label="Open navigation"
                             >
                                 <Menu />
                             </IconButton>
@@ -130,18 +180,31 @@ export default function Navbar({ mode, onToggleTheme }) {
                 </Container>
             </AppBar>
 
+            {/* Mobile Drawer */}
+
             <Drawer
                 anchor="right"
                 open={drawerOpen}
                 onClose={() => setDrawerOpen(false)}
             >
-                <Box sx={{ width: 270, pt: 2 }}>
+                <Box
+                    sx={{
+                        width: {
+                            xs: 280,
+                            sm: 320,
+                        },
+                        pt: 2,
+                        bgcolor: "background.paper",
+                        minHeight: "100%",
+                    }}
+                >
                     <Typography
                         variant="h6"
                         sx={{
                             px: 3,
                             py: 2,
                             fontWeight: 800,
+                            color: "text.primary",
                         }}
                     >
                         Navigation
@@ -157,9 +220,21 @@ export default function Navbar({ mode, onToggleTheme }) {
                                     onClick={() =>
                                         handleNavigation(item.href)
                                     }
+                                    sx={{
+                                        px: 3,
+                                        py: 1.5,
+                                    }}
                                 >
                                     <ListItemText
                                         primary={item.label}
+                                        slotProps={{
+                                            primary: {
+                                                sx: {
+                                                    color: "text.primary",
+                                                    fontWeight: 550,
+                                                },
+                                            },
+                                        }}
                                     />
                                 </ListItemButton>
                             </ListItem>

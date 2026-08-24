@@ -13,11 +13,20 @@ export default function SkillGroup({
         <Paper
             elevation={0}
             sx={{
-                p: 3,
+                p: {
+                    xs: 2.5,
+                    md: 3,
+                },
+
                 height: "100%",
+
                 border: "1px solid",
                 borderColor: "divider",
+
                 borderRadius: 3,
+
+                width: "100%",
+                minWidth: 0,
             }}
         >
             <Typography
@@ -35,6 +44,8 @@ export default function SkillGroup({
                 sx={{
                     flexWrap: "wrap",
                     gap: 1,
+                    width: "100%",
+                    minWidth: 0,
                 }}
             >
                 {skills.map((skill) => (
@@ -43,6 +54,9 @@ export default function SkillGroup({
                         label={skill}
                         variant="outlined"
                         size="small"
+                        sx={{
+                            maxWidth: "100%",
+                        }}
                     />
                 ))}
             </Stack>

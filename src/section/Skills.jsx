@@ -14,23 +14,37 @@ export default function Skills() {
         <Box
             component="section"
             id="skills"
-            sx={{ py: 11 }}
+            sx={{
+                py: {
+                    xs: 6,
+                    md: 11,
+                },
+            }}
         >
-            <Container maxWidth="lg">
+            <Container
+                maxWidth="lg"
+                sx={{
+                    px: {
+                        xs: 2,
+                        sm: 3,
+                    },
+                }}
+            >
                 <SectionHeading
                     eyebrow="TECHNICAL SKILLS"
                     title="Tools I build with."
                     description="A practical stack spanning backend systems, databases, frontend applications, and engineering tooling."
                 />
 
-                <Grid container spacing={2.5}>
+                <Grid container spacing={{ xs: 2, md: 2.5 }}>
                     {Object.entries(skills).map(
                         ([category, items]) => (
                             <Grid
-                                item
-                                xs={12}
-                                sm={6}
-                                md={4}
+                                size={{
+                                    xs: 12,
+                                    sm: 6,
+                                    md: 4,
+                                }}
                                 key={category}
                             >
                                 <SkillGroup
