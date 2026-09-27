@@ -92,7 +92,7 @@ export const projects = [
             "Integrated automated budget alerts and an AI-driven insights assistant for contextual recommendations.",
         ],
 
-        codeUrl: "https://github.com/Hariprasad207",
+        codeUrl: "https://github.com/Hariprasad207/AI_EXPENSE_TRACKER",
         liveUrl: null,
     },
 
